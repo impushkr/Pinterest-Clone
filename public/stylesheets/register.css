@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
 :root {
   --red: #e60023;
 }
@@ -11,6 +12,7 @@
   text-decoration: none;
   font-family: "Inter", sans-serif;
 }
+
 html,
 body {
   width: 100%;
@@ -27,27 +29,30 @@ body {
   overflow: hidden;
 }
 
+/* 👇 background blur image layer */
 #auth-page::before {
   content: "";
   position: absolute;
   inset: 0;
   background: url("https://www.datocms-assets.com/48294/1663251366-responsive-website-design-10-pinterest.webp?auto=format") no-repeat center center/cover;
-  filter: blur(8px); /* 👈 ye blur karta hai background ko */
-  transform: scale(1.1); /* zoom thoda badha deta hai taaki edge blur ache se dikhe */
+  filter: blur(8px); /* 👈 blur effect */
+  transform: scale(1.1); /* prevent edge cutoff */
   z-index: 0;
 }
 
+/* 👇 main signup form box */
 #auth-page .form-page {
   position: relative;
   z-index: 1;
-  background-color: rgba(255, 255, 255, 0.9); /* halka transparent white */
+  background-color: rgba(255, 255, 255, 0.9); /* semi-transparent white */
   padding: 2rem 4rem;
   width: 450px;
   border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-  backdrop-filter: blur(2px); /* optional subtle glass effect */
+  
 }
 
+/* ----------- inner content ----------- */
 
 #auth-page .form-page header {
   text-align: center;
@@ -58,16 +63,19 @@ body {
   font-size: 3rem;
   color: var(--red);
 }
+
 #auth-page .form-page header .heading {
   font-size: 1.6rem;
   font-weight: 500;
-  color: #555555;
+  color: #555;
 }
+
 #auth-page .form-page header .sub-heading {
   font-size: 15px;
   font-weight: 500;
-  color: #555555;
+  color: #555;
 }
+
 #auth-page .form-page form.auth-form {
   display: flex;
   flex-direction: column;
@@ -76,25 +84,24 @@ body {
 }
 
 #auth-page .form-page form.auth-form .input-group {
-  /* background-color: red; */
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-#auth-page .form-page form.auth-form .input-group .ForgotPasswordLink,
+
 #auth-page .form-page form.auth-form .input-group label {
   font-size: 14px;
   margin-left: 5px;
-  color: #555555;
+  color: #555;
 }
+
 #auth-page .form-page form.auth-form .input-group input {
   width: 100%;
-  /* margin-top: 5px; */
   padding: 12px 15px;
-  border: none;
   border: 2px solid #dadada;
   border-radius: 10px;
 }
+
 #auth-page .form-page form.auth-form .input-group .auth-submit-btn {
   background-color: var(--red);
   color: #fff;
@@ -109,10 +116,9 @@ body {
   text-align: center;
   font-weight: 600;
   margin: 8px auto;
-  color: #555555;
-  /* background-color: red; */
-  /* width: 100%; */
+  color: #555;
 }
+
 #auth-page .form-page .auth-social-box {
   display: flex;
   gap: 2rem;
@@ -122,7 +128,7 @@ body {
 
 #auth-page .form-page .social-links i {
   font-size: 2rem;
-  color: #555555;
+  color: #555;
 }
 
 #auth-page .form-page .page-para {
@@ -130,6 +136,7 @@ body {
   padding: 1.5rem 0;
   font-size: 14px;
 }
+
 #auth-page .form-page .page-para > a {
   color: #2c2c2c;
   font-weight: 600;
@@ -144,9 +151,4 @@ body {
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
-.error{
-  color: red;
-  font-size: small;
-  margin-top: 5px;
 }
