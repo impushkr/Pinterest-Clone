@@ -45,7 +45,7 @@ body {
   width: 450px;
   border-radius: 30px;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-  backdrop-filter: blur(2px); /* optional subtle glass effect */
+ 
 }
 
 
