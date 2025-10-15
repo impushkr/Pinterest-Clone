@@ -8,8 +8,7 @@ passport.use(new localStrategy(userModel.authenticate()))
 
 
 router.get('/', function(req, res, next) {
-  res.render("index", { error: "Invalid username or password" });
-
+  res.render("index", { error: req.flash('error')});
 });
 
 router.get('/profile',isLoggedIn,function(req,res,next){
