@@ -26,7 +26,7 @@ const userSChema=mongoose.Schema({
       type: String,
       minlength: 6, // You can adjust security requirement
     },
-    dp: {
+    profileImage: {
       type: String, // URL or path to profile picture
       default: "",  // optional
     },
