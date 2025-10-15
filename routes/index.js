@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/profile',isLoggedIn,function(req,res,next){
-  res.send('profile');
+  res.render('profile');
 })
 
 router.get('/register',function(req,res,next){

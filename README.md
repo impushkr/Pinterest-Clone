@@ -20,3 +20,9 @@
 - passport
 - mongoose
 
+
+
+
+
+
+NOTE:  We are not focused in designing part , the target in this project is to learn backend so we only focused on backend part . we are going to use AI tools like gpt for designing
