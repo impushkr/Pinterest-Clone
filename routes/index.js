@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 router.get('/profile',isLoggedIn,async function(req,res,next){
   const user=await userModel.findOne({username:req.session.passport.user})
   
-  res.render('profile',{user});
+  res.render('profile',{user , nav:true});
 })
 
 router.get('/register',function(req,res,next){
