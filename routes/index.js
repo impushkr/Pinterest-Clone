@@ -12,11 +12,11 @@ router.get('/', function(req, res, next) {
   res.render("index", { error: req.flash('error')});
 });
 
-router.get('/profile',isLoggedIn,async function(req,res,next){
-  const user=await userModel.findOne({username:req.session.passport.user})
-  
-  res.render('profile',{user , nav:true});
-})
+router.post("/login",passport.authenticate("local",{
+  successRedirect: "/profile",
+  failureRedirect:"/",
+  failureFlash:true
+}),function(req,res){ })
 
 router.get('/register',function(req,res,next){
   res.render("register")
@@ -33,12 +33,6 @@ router.post("/register",function(req,res){
   })
 })
 
-router.post("/login",passport.authenticate("local",{
-  successRedirect: "/profile",
-  failureRedirect:"/",
-  failureFlash:true
-}),function(req,res){ })
-
 router.get("/logout",function(req,res){
   req.logout(function(err){
     if (err){
@@ -48,12 +42,23 @@ router.get("/logout",function(req,res){
   })
 })
 
+router.get('/profile',isLoggedIn,async function(req,res,next){
+  const user=await userModel.findOne({username:req.session.passport.user})
+  
+  res.render('profile',{user , nav:true});
+})
+
 router.post('/fileupload',isLoggedIn,upload.single("image"),async function(req,res,next){
 const user = await userModel.findOne({username:req.session.passport.user})
 user.profileImage= req.file.filename;
 await user.save();
 
 res.redirect("/profile")
+})
+
+router.get("/add",isLoggedIn, async function(req,res,next){
+  const user = await userModel.findOne({username: req.session.passport.user});
+  res.render("add",{user,nav:true});
 })
 
 function isLoggedIn(req,res,next){
