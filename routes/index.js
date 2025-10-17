@@ -83,6 +83,12 @@ router.post("/create",isLoggedIn,upload.single("postimage") ,async function (req
   res.redirect("/profile");
 })
 
+router.get('/feed',isLoggedIn,async function (req,res,next){
+  const user = await userModel.findOne({username:req.session.passport.user})
+  const posts = await postModel.find().populate("user")
+  res.render("feed",{user , posts, nav:true})
+})
+
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated())return next();
   res.redirect("/")

@@ -1,0 +1,25 @@
+<% include ./partials/header.ejs %>
+  
+<section class="p-10 flex flex-wrap gap-5">
+
+        <% posts.forEach(function (post) { %>
+  <div class="overflow-hidden w-[14vw]">
+    <div
+      class="w-[14vw] h-[35vh] bg-zinc-200 rounded-lg overflow-hidden shadow"
+    >
+      <img
+        class="h-full w-full object-cover"
+        src="/images/uploads/<%= post.image %>"
+        alt="image"
+      />
+    </div>
+    <div class="w-[45vw]">
+    <h3 class="text-xl font-semibold mt-3"><%= post.title %></h3>
+    <h5 class="text-sm font-medium opacity-60">@<%= post.user.username %></h5>
+    </div>
+  </div>
+  <% }); %>
+     
+</section>
+
+<% include ./partials/footer.ejs %>
