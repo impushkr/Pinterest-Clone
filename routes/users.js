@@ -31,6 +31,12 @@ const userSChema=mongoose.Schema({
       default: "",  // optional
     },
     boards:[],
+    posts:[
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"post"
+      }
+    ]
 
 });
 
