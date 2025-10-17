@@ -83,30 +83,11 @@ router.post("/create",isLoggedIn,upload.single("postimage") ,async function (req
   res.redirect("/profile");
 })
 
-router.get('/feed', async (req, res, next) => {
-  try {
-    let user = null;
-    let userlogin = false;
-
-    // Safe check: req.session.passport exist karta hai ya nahi
-    if (req.session && req.session.passport && req.session.passport.user) {
-      user = await userModel.findOne({ username: req.session.passport.user });
-      userlogin = true;
-    }
-
-    const posts = await postModel.find().populate("user");
-
-    res.render("feed", {
-      user,
-      posts,
-      nav: true,
-      userlogin
-    });
-  } catch (err) {
-    console.error("Feed Route Error:", err);
-    res.status(500).send("Internal Server Error");
-  }
-});
+router.get('/feed',isLoggedIn,async function (req,res,next){
+  const user = await userModel.findOne({username:req.session.passport.user})
+  const posts = await postModel.find().populate("user")
+  res.render("feed",{user , posts, nav:true})
+})
 
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated())return next();
